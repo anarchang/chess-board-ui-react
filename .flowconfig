@@ -1,0 +1,19 @@
+[ignore]
+.*/node_modules/babel-core/*
+.*/node_modules/babel-plugin-transform-react-jsx/*
+.*/node_modules/babelify/*
+.*/node_modules/babel-preset-react/*
+.*/node_modules/babel-preset-es2015/*
+.*/node_modules/flux/node_modules/fbjs/flow/include/*
+.*/node_modules/flux/node_modules/fbemitter/node_modules/fbjs/lib/*
+.*/node_modules/flux/flow/include/*
+
+[include]
+
+[libs]
+./app/declarations
+
+[options]
+module.system=haste
+module.name_mapper='.*\.scss$' -> 'ScssStub'
+module.name_mapper='flux' -> 'Flux'
