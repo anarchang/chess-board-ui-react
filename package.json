@@ -36,6 +36,8 @@
     "jquery": "^2.2.1",
     "object-assign": "^4.0.1",
     "react": "^0.14.7",
+    "react-dnd": "^2.1.2",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^0.14.7",
     "stream-combiner2": "^1.1.1",
     "vinyl-buffer": "^1.0.0",

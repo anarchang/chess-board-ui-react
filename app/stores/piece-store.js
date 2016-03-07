@@ -28,6 +28,11 @@ _pieces[1] = {
   positionX: 1,
   positionY: 2
 }
+_pieces[2] = {
+  pieceType: <Queen />,
+  positionX: 5,
+  positionY: 5
+}
 
 /**
 * Move a piece

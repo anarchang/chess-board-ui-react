@@ -3,15 +3,16 @@
 **/
 
 const React = require('react')
-const Square = require('./square')
-const Knight = require('./knight')
+const BoardSquare = require('./board-square')
 const PieceStore = require('../stores/piece-store')
 const PieceActions = require('../actions/piece-actions')
+const DragDropContext = require('react-dnd').DragDropContext
+const HTML5Backend = require('react-dnd-html5-backend')
+const Piece = require('./piece')
+
 require('../styles/board.scss')
 
 function renderSquare (x:number, y:number, boardState: PieceStore.PieceStoreType): React.Element {
-  let black: boolean = (x + y) % 2 === 1
-
   let pieces = []
 
   let keys: Array<number> = Object.keys(boardState)
@@ -19,21 +20,21 @@ function renderSquare (x:number, y:number, boardState: PieceStore.PieceStoreType
   for (let i = 0; i < keys.length; i++) {
     let piece: PieceStore.PieceType = boardState[keys[i]]
     if ((piece.positionX === x) && (piece.positionY === y)) {
-      pieces.push(<div key={i}> {piece.pieceType}</div>)
+      pieces.push(
+        <div key={i}>
+          <Piece pieceId={keys[i]} pieceType={piece.pieceType} />
+        </div>
+      )
     }
   }
 
   return (
-    <div key={(x * 8) + y} onClick={()=> handleSquareClick(x, y)} >
-      <Square black={black} >
+    <div key={(x * 8) + y}>
+      <BoardSquare x={x} y={y}>
         {pieces}
-      </Square>
+      </BoardSquare>
     </div>
   )
-}
-
-function handleSquareClick (toX: number, toY:number): void {
-  PieceActions.movePiece(toX, toY)
 }
 
 function renderBoard (boardState: PieceStore.PieceStoreType): React.Element {
@@ -46,7 +47,7 @@ function renderBoard (boardState: PieceStore.PieceStoreType): React.Element {
   return squares
 }
 
-module.exports = React.createClass({
+var Board = React.createClass({
   propTypes: {
     boardState: React.PropTypes.object.isRequired // PieceStoreType
   },
@@ -59,3 +60,5 @@ module.exports = React.createClass({
     )
   }
 })
+
+module.exports = DragDropContext(HTML5Backend)(Board)

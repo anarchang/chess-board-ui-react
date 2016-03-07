@@ -6,6 +6,6 @@ const React = require('react')
 
 module.exports = React.createClass({
   render () {
-    return (<span className="piece">♘</span>)
+    return (<div className="piece">♘</div>)
   }
 })
