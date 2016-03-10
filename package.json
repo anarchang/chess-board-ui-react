@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/anarchang/chess-board#readme",
   "dependencies": {
+    "axios": "^0.9.1",
     "babel-core": "^6.6.0",
     "babel-plugin-transform-flow-strip-types": "^6.4.0",
     "babelify": "^7.2.0",

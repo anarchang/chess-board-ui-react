@@ -15,6 +15,7 @@ const Board = require('./board')
 module.exports = React.createClass({
 
   getInitialState () {
+    PieceStore.fetchAll()
     return PieceStore.getAll()
   },
 
